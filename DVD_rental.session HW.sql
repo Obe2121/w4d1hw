@@ -21,7 +21,7 @@ order by COUNT(film_id) DESC;
 --Question 4
 SELECT last_name
 FROM customer
-WHERE last_name = 'William'
+WHERE last_name LIKE 'William'
 --None??
 
 --Question 5
@@ -49,9 +49,15 @@ HAVING last_name LIKE '%es'
 --Not sure if this is right 
 
 --Question 9
-SELECT customer_id, amount 
+SELECT customer_id, COUNT(amount) 
+FROM payment
+GROUP BY customer_id, amount
+HAVING customer_id BETWEEN 380 and 430
+ amount > 250
 
 
 --Question 10
-SELECT COUNT(rating)
+SELECT rating, COUNT(rating)
 FROM film
+GROUP BY rating
+--PG-13
